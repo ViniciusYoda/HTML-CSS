@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links e Âncoras</title>
+</head>
+<body>
+    <h1>Usando links externos</h1>
+    <p>Você pode usar links externos para conectar seu site a outros sites na web. Para criar um link externo, use a tag <code>&lt;a&gt;</code> com o atributo <code>href</code> apontando para a URL desejada.</p>
+    <a href="https://www.github.com/" target="_blank" rel="external">Visite o GitHub</a>
+    <h1>Usando âncoras para navegação interna</h1>
+    <p>Âncoras permitem que você crie links que levam a diferentes seções da mesma página. Para criar uma âncora, use o atributo <code>id</code> em um elemento e crie um link que aponte para esse ID.</p>
+    <h2 id="secao1">Seção 1</h2>
+    <p>Esta é a seção 1. Você pode voltar ao topo da página clicando <a href="#topo">aqui</a>.</p>
+    <h2 id="secao2">Seção 2</h2>
+    <p>Esta é a seção 2. Você pode voltar ao topo da página clicando <a href="#topo">aqui</a>.</p>
+    <h2 id="topo">Topo da Página</h2>
+    <p>Você está no topo da página.</p>
+    <a href="#secao1">Ir para Seção 1</a> | <a href="#secao2">Ir para Seção 2</a>
+
+    <h1>Essa é a primeira pagina</h1>
+    <a href="outraPagiona.html" rel="next">Ir para outra página</a>
+
+    <h2>Terceira página</h2>
+    <a href="not/pag3.html" rel="next">Ir para a terceira página</a>
+
+    <a href="not/pag3.html" rel="_self">Voltar para a segunda página</a>
+</body>
+</html>
