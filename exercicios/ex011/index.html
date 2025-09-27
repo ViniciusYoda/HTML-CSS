@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagens dinamicas</title>
+</head>
+<body>
+    <h1>Imagens Dinâmicas</h1>
+    <picture>
+        <source media="(max-width: 1050px)" srcset="img/download.png">
+        <source media="(max-width: 750px)" srcset="img/download.png">
+        <img src="img/download.png" alt="download">
+    </picture>
+    <h1>Reproduzindo audios</h1>
+    <audio preload="metadata" autoplay controls loop>
+        <source src="media/som.mp3" type="audio/mpeg">
+        <source src="media/som.ogg" type="audio/ogg">
+        <source src="media/som.wav" type="audio/wav">
+        <p>Infelizmente seu navegador não é compativel com audio aqui um link para voce baixar <a href="media/som.mp3">media/som.mp3</a></p>
+    </audio>
+</body>
+</html>
