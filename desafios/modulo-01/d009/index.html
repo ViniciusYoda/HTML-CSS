@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vídeos Legais para Assistir</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #1a2a6c;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* Proporção 16:9 */
+            overflow: hidden;
+        }
+        
+        .video-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+        
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .video-card:hover .play-overlay {
+            opacity: 1;
+        }
+        
+        .play-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 0, 0, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        
+        .video-card:hover .play-icon {
+            transform: scale(1);
+        }
+        
+        .play-icon::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 20px solid white;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 5px;
+        }
+        
+        .video-info {
+            padding: 20px;
+        }
+        
+        .video-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1a2a6c;
+        }
+        
+        .video-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .watch-btn {
+            display: inline-block;
+            background: linear-gradient(to right, #1a2a6c, #b21f1f);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .watch-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: white;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .video-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Vídeos Legais para Assistir</h1>
+            <p class="subtitle">Uma seleção dos melhores conteúdos para entretenimento e aprendizado</p>
+        </header>
+        
+        <div class="videos-grid">
+            <!-- Vídeo 1 -->
+            <div class="video-card">
+                <a href="https://www.youtube.com/watch?v=rH87HACcvKs" target="_blank" class="video-thumbnail">
+                    <img src="https://img.youtube.com/vi/rH87HACcvKs/hqdefault.jpg" alt="Capa do vídeo 1">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
+                </a>
+                <div class="video-info">
+                    <h3 class="video-title">Aventuras Incríveis na Natureza</h3>
+                    <p class="video-description">Descubra paisagens deslumbrantes e experiências únicas ao redor do mundo.</p>
+                    <a href="https://www.youtube.com/watch?v=rH87HACcvKs" target="_blank" class="watch-btn">Assistir Agora</a>
+                </div>
+            </div>
+            
+            <!-- Vídeo 2 -->
+            <div class="video-card">
+                <a href="https://www.youtube.com/watch?v=MGxLXjoxWOQ" target="_blank" class="video-thumbnail">
+                    <img src="https://img.youtube.com/vi/MGxLXjoxWOQ/hqdefault.jpg" alt="Capa do vídeo 2">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
+                </a>
+                <div class="video-info">
+                    <h3 class="video-title">Tecnologia do Futuro</h3>
+                    <p class="video-description">As inovações tecnológicas que vão transformar nossa vida nos próximos anos.</p>
+                    <a href="https://www.youtube.com/watch?v=MGxLXjoxWOQ" target="_blank" class="watch-btn">Assistir Agora</a>
+                </div>
+            </div>
+            
+            <!-- Vídeo 3 -->
+            <div class="video-card">
+                <a href="https://www.youtube.com/watch?v=0Ant4h8s-B4" target="_blank" class="video-thumbnail">
+                    <img src="https://img.youtube.com/vi/0Ant4h8s-B4/hqdefault.jpg" alt="Capa do vídeo 3">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
+                </a>
+                <div class="video-info">
+                    <h3 class="video-title">Receitas Fáceis e Deliciosas</h3>
+                    <p class="video-description">Aprenda a preparar pratos incríveis com ingredientes simples e técnicas fáceis.</p>
+                    <a href="https://www.youtube.com/watch?v=0Ant4h8s-B4" target="_blank" class="watch-btn">Assistir Agora</a>
+                </div>
+            </div>
+            
+            <!-- Vídeo 4 -->
+            <div class="video-card">
+                <a href="https://www.youtube.com/watch?v=25Jfjtc4cAk" target="_blank" class="video-thumbnail">
+                    <img src="https://img.youtube.com/vi/25Jfjtc4cAk/hqdefault.jpg" alt="Capa do vídeo 4">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
+                </a>
+                <div class="video-info">
+                    <h3 class="video-title">Exercícios para Fazer em Casa</h3>
+                    <p class="video-description">Mantenha a forma com esta rotina de exercícios que você pode fazer sem sair de casa.</p>
+                    <a href="https://www.youtube.com/watch?v=25Jfjtc4cAk" target="_blank" class="watch-btn">Assistir Agora</a>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 - Todos os direitos reservados | Página criada para fins educativos</p>
+        </footer>
+    </div>
+</body>
+</html>
