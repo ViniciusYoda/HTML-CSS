@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input com Ponto Decimal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        
+        .input-container {
+            margin-bottom: 30px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        input:focus {
+            border-color: #667eea;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+        
+        .examples {
+            background-color: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .examples h3 {
+            color: #444;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .example-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .example-item:last-child {
+            border-bottom: none;
+        }
+        
+        .example-input {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .example-output {
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .instruction {
+            text-align: center;
+            color: #666;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Input com Ponto Decimal</h1>
+        
+        <div class="input-container">
+            <input type="text" id="numberInput" placeholder="Digite números" autocomplete="off">
+        </div>
+        
+        <div class="examples">
+            <h3>Como funciona:</h3>
+            <div class="example-item">
+                <span class="example-input">5</span>
+                <span class="example-output">→ 5</span>
+            </div>
+            <div class="example-item">
+                <span class="example-input">55</span>
+                <span class="example-output">→ 5.5</span>
+            </div>
+            <div class="example-item">
+                <span class="example-input">60</span>
+                <span class="example-output">→ 6.0</span>
+            </div>
+            <div class="example-item">
+                <span class="example-input">607</span>
+                <span class="example-output">→ 60.7</span>
+            </div>
+            <div class="example-item">
+                <span class="example-input">7024</span>
+                <span class="example-output">→ 70.24</span>
+            </div>
+            <div class="example-item">
+                <span class="example-input">56742</span>
+                <span class="example-output">→ 567.42</span>
+            </div>
+            <div class="example-item">
+                <span class="example-input">567690</span>
+                <span class="example-output">→ 5676.90</span>
+            </div>
+        </div>
+        
+        <p class="instruction">Digite números e veja a formatação com ponto decimal</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const numberInput = document.getElementById('numberInput');
+            
+            numberInput.addEventListener('input', function(e) {
+                // Salva a posição do cursor
+                const cursorPosition = e.target.selectionStart;
+                
+                // Pega o valor atual e remove tudo que não é número
+                let rawValue = this.value.replace(/\D/g, '');
+                
+                // Formata com ponto decimal
+                let formattedValue = formatWithDot(rawValue);
+                
+                // Atualiza o valor do campo
+                this.value = formattedValue;
+                
+                // Ajusta a posição do cursor para o final
+                const newCursorPosition = formattedValue.length;
+                e.target.setSelectionRange(newCursorPosition, newCursorPosition);
+            });
+            
+            function formatWithDot(numStr) {
+                if (numStr === '') return '';
+                
+                // 1 dígito: mantém igual
+                if (numStr.length === 1) return numStr;
+                
+                // 2 dígitos: ponto após o primeiro
+                if (numStr.length === 2) {
+                    return numStr.charAt(0) + '.' + numStr.charAt(1);
+                }
+                
+                // 3+ dígitos: ponto antes dos dois últimos
+                let integerPart = numStr.slice(0, -2);
+                let decimalPart = numStr.slice(-2);
+                
+                return integerPart + '.' + decimalPart;
+            }
+            
+            // Foca no input automaticamente
+            numberInput.focus();
+        });
+    </script>
+</body>
+</html>
